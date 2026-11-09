@@ -47,6 +47,11 @@ For improving an existing skill or tool from a run's notes, follow `${CLAUDE_SKI
 - Only the user approves writes and outward actions.
 - Give material to read-only reviewer agents only.
 
+## Cleanup
+
+- Anything that starts processes (browsers, pages and sessions opened through MCP, servers, drivers, background jobs) says where to stop them: at the end of the run and on failure (`try`/`finally`, `trap`). Track what you started; leave processes the user already had alone.
+- Put temp files in one dedicated directory per run and remove it when done, unless it's output the user needs. Say which files are kept and where.
+
 ## Portable and CI-ready
 
 - No hardcoded personal paths or logins. Local checkouts are optional, with a remote fallback.
