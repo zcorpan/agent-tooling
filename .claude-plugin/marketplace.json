@@ -1,0 +1,14 @@
+{
+  "name": "agent-tooling",
+  "owner": {
+    "name": "Simon Pieters"
+  },
+  "description": "Rules for building and improving Claude Code skills, plugins and the tools they drive",
+  "plugins": [
+    {
+      "name": "agent-tooling",
+      "source": "./",
+      "description": "Rules for building and improving Claude Code skills, plugins and the tools they drive"
+    }
+  ]
+}
