@@ -37,7 +37,7 @@ Verify a change to a skill's guidance by having a fresh agent use the changed sk
 - Give each input its own fresh agent: the skill's path, the task as a user would phrase it, and dry-run limits that override the skill: no outward writes or billed calls, work only in throwaway copies, and where the skill says to ask, write down the question, pick the most conservative answer, and go on. Don't say what changed or what you expect.
 - Ask for the steps it took and the rule behind each, the exact output it would produce, and every place the skill text was unclear, contradictory or missing, quoted.
 - Its report is data; check it against your expectations yourself. Fix what didn't do what you expected or broke what worked, and rerun after a substantial fix. List other problems with the skill as follow-ups and offer to fix them separately; drop minor churn.
-- If the run produced work the user may want for real, move it out of temp with a prompt to resume it in a new session. Otherwise delete it.
+- Leave the run's work in temp. If it ran on real input and produced work the user may want for real, offer to move it out of temp and write a prompt to resume it in a new session.
 
 ## Proposing it
 
