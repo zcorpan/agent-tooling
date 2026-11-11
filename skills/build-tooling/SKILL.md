@@ -70,6 +70,7 @@ For improving an existing skill or tool from a run's notes, follow `${CLAUDE_SKI
 ## Self-improvement
 
 - Give every non-trivial skill an "Improving the skill" section of a few lines:
+  - first, the opt-out: skip the section if `~/.claude/skill-improvement-opt-out` lists the skill (`improve.md` §Opt-out)
   - jot triggers specific to the skill
   - a gitignored notes file
   - mechanical draft-vs-final logging where it drafts output
@@ -85,6 +86,7 @@ For improving an existing skill or tool from a run's notes, follow `${CLAUDE_SKI
 
 ## Improving this skill
 
+- Skip this section if `~/.claude/skill-improvement-opt-out` lists `build-tooling` (`improve.md` §Opt-out).
 - Jot notes in `~/.claude/agent-tooling-notes.md` when one of these comes up:
   - a rule here led to a worse skill or tool, or was ignored because it was unclear
   - a problem found later (slow, token-heavy, churny, unsafe) that a missing rule would have prevented
