@@ -1,11 +1,11 @@
 ---
 name: build-tooling
-description: Use when creating, editing, reviewing, or improving a Claude Code skill, plugin, agent, or hook, or a helper CLI/script that a skill drives, including drafting a skill's self-improvement PR. Triggers on "new skill", "edit SKILL.md", "build a tool for", "make a plugin", "improve the skill", "skill review".
+description: Use when creating, editing, reviewing, or improving an agent skill (Claude Code, Gemini CLI, or similar), plugin, subagent, or hook, or a helper CLI/script that a skill drives, including drafting a skill's self-improvement PR. Triggers on "new skill", "edit SKILL.md", "build a tool for", "make a plugin", "improve the skill", "skill review".
 ---
 
 # build-tooling
 
-For improving an existing skill or tool from a run's notes, follow `${CLAUDE_SKILL_DIR}/improve.md`. For building or changing one, follow the rest of this file; for a change the user asks for, also follow `improve.md`'s intro, §Filtering's upstream check and last point, §Dry run and §Proposing it, but not its bar for offering.
+For improving an existing skill or tool from a run's notes, follow `improve.md` in this skill's directory. For building or changing one, follow the rest of this file; for a change the user asks for, also follow `improve.md`'s intro, §Filtering's upstream check and last point, §Dry run and §Proposing it, but not its bar for offering.
 
 ## Before building
 
@@ -67,11 +67,12 @@ For improving an existing skill or tool from a run's notes, follow `${CLAUDE_SKI
 - Provide a setup/doctor check, and no interactive prompts in scripts.
 - Take auth from env or an existing CLI.
 - Start CI support as a `docs/ci.md` of open questions, not bot code.
+- Write skill text for any agent: "the agent", "a fresh agent", "this skill's directory". Give agent-specific paths, tools and commands as "under <agent>, …" next to a neutral default (XDG directories for config and state), and keep per-agent install steps in the README.
 
 ## Self-improvement
 
 - Give every non-trivial skill an "Improving the skill" section of a few lines:
-  - first, the opt-out: skip the section if `~/.claude/skill-improvement-opt-out` lists the skill (`improve.md` §Opt-out)
+  - first, the opt-out: skip the section if `~/.config/skill-improvement/opt-out` (under `$XDG_CONFIG_HOME` if set) lists the skill (`improve.md` §Opt-out)
   - jot triggers specific to the skill
   - a gitignored notes file
   - mechanical draft-vs-final logging where it drafts output
@@ -88,8 +89,8 @@ For improving an existing skill or tool from a run's notes, follow `${CLAUDE_SKI
 
 ## Improving this skill
 
-- Skip this section if `~/.claude/skill-improvement-opt-out` lists `build-tooling` (`improve.md` §Opt-out).
-- Jot notes in `~/.claude/agent-tooling-notes.md` when one of these comes up:
+- Skip this section if `~/.config/skill-improvement/opt-out` lists `build-tooling` (`improve.md` §Opt-out).
+- Jot notes in `~/.local/state/skill-improvement/agent-tooling.md` (under `$XDG_STATE_HOME` if set) when one of these comes up:
   - a rule here led to a worse skill or tool, or was ignored because it was unclear
   - a problem found later (slow, token-heavy, churny, unsafe) that a missing rule would have prevented
   - the user rejected or rewrote an edit drafted under `improve.md`
