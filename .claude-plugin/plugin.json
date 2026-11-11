@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
   "name": "agent-tooling",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Rules for building and improving Claude Code skills, plugins and the tools they drive",
   "author": {
     "name": "Simon Pieters"
