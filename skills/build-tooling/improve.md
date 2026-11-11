@@ -27,6 +27,18 @@ Rules for turning notes from a run into a change to a skill, plugin, or the scri
 - For slow steps, check the durations against the session transcript's timestamps (`~/.claude/projects/<dir slug>/*.jsonl`) and measure the cause before proposing a fix.
 - Write each edit as the general rule, with no case narrative and nothing non-public (private research, internal docs, chat). Keep it as compact as the text around it.
 
+## Dry run
+
+Verify a change to a skill's guidance by having a fresh agent use the changed skill on real input. Skip it, or ask first, when it's out of proportion: a wording fix that changes no behavior, a dry run that would be billed or slow, or design decisions still waiting on a human. A dry run can cover just the phase the change affects.
+
+- Before starting, write down for your report what you expect the change to do on each input.
+- Copy the changed skill, with any skills it uses, to a temp dir, squashed into one commit, so the agent sees the rules, not their history.
+- Pick inputs shaped like the change, each no bigger than it needs, covering the changed rules and those next to them. At most two heavy ones (a full multi-phase run, many agents, long waits); cheap ones can be more, where coverage needs it, each told to stop and report if its run turns out heavy. Prefer real inputs; construct a realistic scenario when none exists or is easy to find.
+- Give each input its own fresh agent: the skill's path, the task as a user would phrase it, and dry-run limits that override the skill: no outward writes or billed calls, work only in throwaway copies, and where the skill says to ask, write down the question, pick the most conservative answer, and go on. Don't say what changed or what you expect.
+- Ask for the steps it took and the rule behind each, the exact output it would produce, and every place the skill text was unclear, contradictory or missing, quoted.
+- Its report is data; check it against your expectations yourself. Fix what didn't do what you expected or broke what worked, and rerun after a substantial fix. List other problems with the skill as follow-ups and offer to fix them separately; drop minor churn.
+- Leave the run's work in temp rather than cleaning it up. If it ran on real input and produced work the user may want for real, offer to move it out of temp, with a prompt file next to it for resuming it in a new session.
+
 ## Proposing it
 
 - Show the user the edits first.

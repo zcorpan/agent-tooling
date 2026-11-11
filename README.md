@@ -6,6 +6,7 @@ A Claude Code plugin with one skill, `build-tooling`, for creating, editing, and
 - safe writes, and handling untrusted content
 - portability, and readiness for CI later
 - self-improvement without churn
+- verifying changes with dry runs
 
 [`improve.md`](skills/build-tooling/improve.md) holds the rules for turning a run's notes into a change. It's self-contained, so other skills' "Improving the skill" sections can point to its raw URL without requiring this plugin:
 
