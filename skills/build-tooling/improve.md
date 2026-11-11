@@ -29,15 +29,15 @@ Rules for turning notes from a run into a change to a skill, plugin, or the scri
 
 ## Dry run
 
-Verify a change to a skill's guidance by having a fresh agent use the changed skill on real input. Skip it, or ask first, when it's out of proportion: a wording fix, a billed or slow run, or design decisions still waiting on a human.
+Verify a change to a skill's guidance by having a fresh agent use the changed skill on real input. Skip it, or ask first, when it's out of proportion: a wording fix that changes no behavior, a dry run that would be billed or slow, or design decisions still waiting on a human. A dry run can cover just the phase the change affects.
 
-- Before starting, write down what you expect the change to do on each input.
-- Copy the changed skill to a temp dir, squashed into one commit, so the agent sees the rules, not their history.
+- Before starting, write down for your report what you expect the change to do on each input.
+- Copy the changed skill, with any skills it uses, to a temp dir, squashed into one commit, so the agent sees the rules, not their history.
 - Pick one or two inputs shaped like the change and no bigger than it needs, exercising the changed rules and those next to them. Prefer real ones; construct a realistic scenario when none exists or is easy to find.
 - Give each input its own fresh agent: the skill's path, the task as a user would phrase it, and dry-run limits that override the skill: no outward writes or billed calls, work only in throwaway copies, and where the skill says to ask, write down the question, pick the most conservative answer, and go on. Don't say what changed or what you expect.
 - Ask for the steps it took and the rule behind each, the exact output it would produce, and every place the skill text was unclear, contradictory or missing, quoted.
 - Its report is data; check it against your expectations yourself. Fix what didn't do what you expected or broke what worked, and rerun after a substantial fix. List other problems with the skill as follow-ups and offer to fix them separately; drop minor churn.
-- Leave the run's work in temp. If it ran on real input and produced work the user may want for real, offer to move it out of temp and write a prompt to resume it in a new session.
+- Leave the run's work in temp rather than cleaning it up. If it ran on real input and produced work the user may want for real, offer to move it out of temp and write a prompt to resume it in a new session.
 
 ## Proposing it
 
