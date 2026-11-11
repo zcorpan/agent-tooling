@@ -19,6 +19,7 @@ Rules for turning notes from a run into a change to a skill, plugin, or the scri
 - `~/.claude/skill-improvement-opt-out` lists skills, one name per line, whose users don't want this. For a listed skill, jot no notes and don't offer changes to the skill.
 - End each offer by saying that "don't ask again" turns these off for the skill. When the user says so in any words, append its name to the file (creating it if needed), and say that removing the line, or asking, turns them back on.
 - When the user asks to turn them back on, remove the line.
+- This covers offers that come from notes, not follow-ups to a change the user asked for.
 
 ## When to offer a change
 
@@ -28,7 +29,7 @@ Rules for turning notes from a run into a change to a skill, plugin, or the scri
 ## Filtering
 
 - Keep only what would change a run on different inputs. Drop what's specific to this case, and what a run would work out on its own.
-- Skip what upstream `main` already says; the installed copy may be older.
+- Skip what upstream `main` already says; the installed copy may be older. Check it without writing to the user's checkout: `git ls-remote`, `gh api`, or a fetch in your own clone.
 - Prefer, in order: a data or script fix, tightening an existing line, deleting text that proved wrong. Add a new line only when none of these fit.
 - For slow steps, check the durations against the session transcript's timestamps (`~/.claude/projects/<dir slug>/*.jsonl`) and measure the cause before proposing a fix.
 - Write each edit as the general rule, with no case narrative and nothing non-public (private research, internal docs, chat). Keep it as compact as the text around it.
@@ -47,8 +48,9 @@ Verify a change to a skill's guidance by having a fresh agent use the changed sk
 
 ## Proposing it
 
+- Find every other place that describes the changed behavior (other lines in the file, docs, templates, skills that reuse the section) and make them agree, including terms the edit makes ambiguous.
 - Show the user the edits first.
 - Work on a branch in a clone, or in a fork's clone when you don't have push access. Follow the repo's commit and versioning conventions.
-- Give the push and `gh pr create` commands for the user to run as `! <command>`. PR body: a sentence or two, linking the public work that prompted it, if any.
+- Give the push and `gh pr create` commands for the user to run as `! <command>`. A local or `--shared` clone's origin is the user's checkout, so start with `git -C <checkout> fetch <clone> <branch>:<branch>` and push from there. PR body: a sentence or two, linking the public work that prompted it, if any.
 
 If these rules themselves got in the way, note that too, and offer a PR to `zcorpan/agent-tooling`, unless `~/.claude/skill-improvement-opt-out` lists `build-tooling`.

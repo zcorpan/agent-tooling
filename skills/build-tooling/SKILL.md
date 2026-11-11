@@ -5,17 +5,18 @@ description: Use when creating, editing, reviewing, or improving a Claude Code s
 
 # build-tooling
 
-For improving an existing skill or tool from a run's notes, follow `${CLAUDE_SKILL_DIR}/improve.md`. The rest is for building or changing one.
+For improving an existing skill or tool from a run's notes, follow `${CLAUDE_SKILL_DIR}/improve.md`. For building or changing one, follow the rest of this file; for a change the user asks for, also follow `improve.md`'s intro, §Filtering's upstream check and last point, §Dry run and §Proposing it, but not its bar for offering.
 
 ## Before building
 
 - Look for prior art in the user's repos and the target repo, and reuse their layout, helpers and conventions.
 - Find out how the work is actually done today (history, past issues, the people doing it) before encoding rules.
+- Scale both to the change: a small edit needs only the surrounding text, its recent history, and a quick check that it matches current practice. If the evidence contradicts what the user asked for, say so and ask.
 
 ## Split
 
 - Scripts do what's deterministic: fetching, parsing, checks, ranking, writes. The model does only judgment: classification, wording, reading threads.
-- If a rule can be code, make it code rather than prose.
+- If a rule can be code, make it code rather than prose. When the user asked for prose, make that change and offer the code as a follow-up.
 
 ## Tokens
 
@@ -38,7 +39,7 @@ For improving an existing skill or tool from a run's notes, follow `${CLAUDE_SKI
 
 ## Writes
 
-- Draft, then validate, show the diff, get approval, and apply. Dry run by default, with an explicit flag to write.
+- For tools that write: draft, then validate, show the diff, get approval, and apply. Dry run by default, with an explicit flag to write.
 - Validate against live allowlists, detect concurrent edits, and journal each write with its actor.
 
 ## Untrusted content
@@ -76,6 +77,7 @@ For improving an existing skill or tool from a run's notes, follow `${CLAUDE_SKI
   - mechanical draft-vs-final logging where it drafts output
   - when to offer a PR (a privacy gate if runs can be private)
 - End that section with: "To turn notes into a change, follow the `build-tooling` skill's `improve.md` if it's installed, else read https://raw.githubusercontent.com/zcorpan/agent-tooling/main/skills/build-tooling/improve.md and apply what's relevant." If the skill isn't installed, it may mention once that it's available; never require it.
+- When editing a skill that has no such section, offer to add one separately rather than adding it unasked, unless an open PR already adds one.
 
 ## Test and ship
 
