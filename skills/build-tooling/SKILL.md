@@ -80,6 +80,7 @@ For improving an existing skill or tool from a run's notes, follow `${CLAUDE_SKI
 
 - Unit-test scripts on recorded fixtures, and round-trip any code that edits text.
 - Do a live read-only run before the first real write.
+- Verify changes to judgment guidance with a dry run (`improve.md` §Dry run).
 - Follow the repo's versioning rules for plugins.
 
 ## Improving this skill
