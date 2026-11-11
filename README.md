@@ -1,6 +1,6 @@
 # agent-tooling
 
-A Claude Code plugin with one skill, `build-tooling`, for creating, editing, and improving skills, plugins, agents, hooks, and the scripts a skill drives. It covers:
+An agent skill, `build-tooling`, also packaged as a Claude Code plugin, for creating, editing, and improving skills, plugins, agents, hooks, and the scripts a skill drives. It covers:
 - splitting work between scripts and the model
 - token budget and performance
 - safe writes, and handling untrusted content
@@ -35,4 +35,10 @@ Or clone it and symlink it into your skills directory, where it loads as `agent-
 ```
 git clone https://github.com/zcorpan/agent-tooling ~/git/zcorpan/agent-tooling
 ln -s ~/git/zcorpan/agent-tooling ~/.claude/skills/agent-tooling
+```
+
+For Gemini CLI, link the skill from the clone (untested):
+
+```
+gemini skills link ~/git/zcorpan/agent-tooling/skills/build-tooling
 ```
